@@ -1,0 +1,19 @@
+<?php 
+
+	// Habilita errores de php.
+	// Se usa cuando es php estructurado como es el caso de este proyecto,
+	// los frameworks tienes sus propios debug de errores
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
+	$DB = new PDO('mysql:host=127.0.0.1;dbname=diary_studen','root','');
+
+	$DBi = mysqli_connect(
+		'127.0.0.1',
+		'root',
+		'',
+		'diary_studen'
+	);
+
+?>

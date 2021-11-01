@@ -1,0 +1,19 @@
+.center-xy{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.center-y{
+	display: flex;
+	align-items: center;
+}
+.center-x{
+	display: flex;
+	justify-content: center;
+}
+.pointer{
+	cursor: pointer !important;
+}
+#diary-calendar{
+	
+}
