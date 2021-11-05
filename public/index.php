@@ -32,13 +32,6 @@
 
 	 ?>
 
-	<!-- # # WINDOWS TASK # # -->
-	<?php 
-
-		include __DIR__."/../template/layout/window_task.php"
-
-	 ?>
-
 	<!-- WINDOWS NOTIFICATION -->
 	<?php 
 

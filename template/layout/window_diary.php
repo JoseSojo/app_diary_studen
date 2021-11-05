@@ -23,9 +23,13 @@
 				</div>
 				<div class="card-body">
 					<form id="save-noti" autocomplete="off">
-						<div class="form-group d-flex">
-							<i class="bi-chat-right-text-fill center-xy col-2 col-md-3 bg-light"></i>
-							<input type="text" class="form-control shadow-none rounded-0" placeholder="Nota" id="noti-title">
+						<div class="input-group">
+							<span class="input-group-text rounded-0 bi-clipboard"></span>
+							<input type="text" class="form-control shadow-none rounded-0" placeholder="Nota" id="noti-matter">
+						</div>
+						<div class="input-group">
+							<span class="input-group-text rounded-0 bi-card-text"></span>
+							<textarea class="form-control shadow-none rounded-0" id="noti-descript"></textarea>
 						</div>
 						<div class="form-group d-flex my-3">
 							<!-- INPUT DAY -->
@@ -37,7 +41,7 @@
 						</div>
 						<div class="form-group d-flex mt-2">
 							<button type="submit" class="btn btn-outline-dark rounded-0 shadow-none btn-block w-100 disabled" id="noti-submit">
-								Guardar en la Agenda
+								Guardar Nota
 								<i class="bi-check-circle-fill lead"></i>
 							</button>
 						</div>
@@ -55,23 +59,30 @@
 			<table class="table table-sm table-bordered table-striped text-center">
 				<thead>
 					<tr>
-						<td class="lead">
-							<span>
-								Titulo
+						<td>
+							<span class="p-0">
+								Asignatura
 							</span>
 						</td>
-						<td class="lead">
-							<span>
+						<td>
+							<span class="p-0">
+								Evaluación
+							</span>
+						</td>
+						<td>
+							<span class="p-0">
 								Guardo el...
 							</span>
 						</td>
-						<td class="lead">
-							<span>
+						<td>
+							<span class="p-0">
 								Hasta...
 							</span>
 						</td>
-						<td class="lead">
-							<button class="btn btn-sm btn-outline-danger rounded-0" id="diary-empty-see">Vaciar tabla</button>
+						<td class="p-0">
+							<button class="btn btn-sm btn-danger w-100 rounded-0" id="diary-empty-see">
+								Vaciar tabla
+							</button>
 						</td>
 					</tr>
 				</thead>

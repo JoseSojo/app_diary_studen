@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `data`;
 CREATE TABLE `data` (
-	`id` int(11) NOT NULL,
+	`id` int(11) NULL,
 	`name` varchar(255) NOT NULL,
 	`race` varchar(255) NOT NULL,
 	`univ` varchar(255) NOT NULL,
@@ -33,21 +33,9 @@ CREATE TABLE `data` (
 -- ----------------------------
 -- Records of data
 -- ----------------------------
+ 
 
--- ----------------------------
--- Table structure for task
--- ----------------------------
-DROP TABLE IF EXISTS `task`;
-CREATE TABLE `diary_studen`.`task` (
-	`id` INT NOT NULL AUTO_INCREMENT ,
-	`title` VARCHAR(100) NOT NULL ,
-	`descript` VARCHAR(150) NOT NULL ,
-	PRIMARY KEY (`id`)
-) ENGINE = InnoDB DEFAULT CHARSET=latin1;
 
--- ----------------------------
--- Records of studen
--- ----------------------------
 -- ----------------------------
 -- Table structure for matter
 -- ----------------------------
@@ -71,6 +59,7 @@ DROP TABLE IF EXISTS `diary`;
 CREATE TABLE `diary_studen`.`diary` (
 	`id` INT NULL AUTO_INCREMENT ,
 	`title` VARCHAR(100) NOT NULL , 
+	`descript` VARCHAR(100) NOT NULL , 
 	`day` INT(100) NOT NULL, 
 	`month` INT(100) NOT NULL, 
 	`year` INT(100) NOT NULL , 

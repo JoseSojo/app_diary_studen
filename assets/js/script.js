@@ -1,28 +1,36 @@
 $(document).ready(function() {
-	console.log('jQuery is Working');
-	seeTask ();
+	// HIDE ELEMENTS
+	$('#msj-err-matter').hide();
+	$('#alert-matter-delete').hide();
+	$('#alert-add-data').hide();
+	$('#alert-add-matter').hide();
+	$('#alert-save-task').hide();
+	$('#alert-add-data').hide();
+	$('#alert-save-noti').hide();
+	$('#delete-task').hide();
+	$('#alert-delete-noti').hide();
+
+	// EXECUTE TO FUNCTION
 	seeData();
 	seeMatter();
-	seeNoti();
+	seeNot();
 	seeNotification();
+
 	/*
 	 * CAMBIAR DE VENTANAS
-	 *
-	 *
 	 *
 	*/
 	// Array the windows document
 	let windows = [
 		$('#studen'), $('#diary'),
-		$('#task'), $('#noti'), 
-		$('#config')
+		$('#noti'), $('#config')
 	]
 	// Array the buton for change window
 	let btns = [
-		$('#btn-studen'), $('#btn-diary'),
-		$('#btn-task'), $('#btn-noti'),
-		$('#btn-config')
+		$('#ico-studen'), $('#ico-diary'),
+		$('#ico-noti'),	$('#ico-config')
 	]
+	// ICO NOTI
 	let icoNoti = false;
 	let itemNoti = $('#ico-noti');
 	hideIcoNoti (icoNoti,itemNoti)
@@ -32,48 +40,41 @@ $(document).ready(function() {
 			ico.addClass('bi-bell-fill');
 		}
 	}
-	seeHide(windows[0],windows[1],windows[2],windows[3],windows[4]);
-	removeAddClass(btns[0],btns[1],btns[2],btns[3],btns[4])
+	seeHide(windows[0],windows[1],windows[2],windows[3]);
+	removeAddClass(btns[0],btns[1],btns[2],btns[3])
 
 	btns[0].click(function(event) {
-		seeHide(windows[0],windows[1],windows[2],windows[3],windows[4]);
-		removeAddClass(btns[0],btns[1],btns[2],btns[3],btns[4])
+		seeHide(windows[0],windows[1],windows[2],windows[3]);
+		removeAddClass(btns[0],btns[1],btns[2],btns[3])
 	});
 	btns[1].click(function(event) {
-		seeHide(windows[1],windows[0],windows[2],windows[3],windows[4]);
-		removeAddClass(btns[1],btns[0],btns[2],btns[3],btns[4])
+		seeHide(windows[1],windows[0],windows[2],windows[3]);
+		removeAddClass(btns[1],btns[0],btns[2],btns[3])
 	});
 	btns[2].click(function(event) {
-		seeHide(windows[2],windows[0],windows[1],windows[3],windows[4]);
-		removeAddClass(btns[2],btns[0],btns[1],btns[3],btns[4])
+		seeHide(windows[2],windows[0],windows[1],windows[3]);
+		removeAddClass(btns[2],btns[0],btns[1],btns[3])
 	});
 	btns[3].click(function(event) {
-		seeHide(windows[3],windows[0],windows[1],windows[2],windows[4]);
-		removeAddClass(btns[3],btns[0],btns[1],btns[2],btns[4])
+		seeHide(windows[3],windows[0],windows[1],windows[2]);
+		removeAddClass(btns[3],btns[0],btns[1],btns[2])
 	});
-	btns[4].click(function(event) {
-		seeHide(windows[4],windows[0],windows[1],windows[2],windows[3]);
-		removeAddClass(btns[4],btns[0],btns[1],btns[2],btns[3])
-	});
-	function seeHide(cero,one,two,tree,four,){
+	function seeHide(cero,one,two,tree,){
 		cero.show(700);
 		one.hide();
 		two.hide();
 		tree.hide();
-		four.hide();
 	}	
-	function removeAddClass(cero,one,two,tree,four){
-		cero.removeClass('btn-outline-info');
-		one.addClass('btn-outline-info');
-		two.addClass('btn-outline-info');
-		tree.addClass('btn-outline-info');
-		four.addClass('btn-outline-info');
+	function removeAddClass(cero,one,two,tree){
+		cero.removeClass('text-muted');
+		one.addClass('text-muted');
+		two.addClass('text-muted');
+		tree.addClass('text-muted');
 		
-		cero.addClass('btn-outline-warning');
-		one.removeClass('btn-outline-warning');
-		two.removeClass('btn-outline-warning');
-		tree.removeClass('btn-outline-warning');
-		four.removeClass('btn-outline-warning');
+		cero.addClass('text-warning');
+		one.removeClass('text-warning');
+		two.removeClass('text-warning');
+		tree.removeClass('text-warning');
 	}
 
 
@@ -85,16 +86,9 @@ $(document).ready(function() {
 	 *
 	*/
 	$('#msj-info-tablet').hide(6000);
-	$('#msj-err-matter').hide();
+	
 	$('#msj-info-matter').hide(8000);
-	$('#alert-matter-delete').hide();
-	$('#alert-add-data').hide();
-	$('#alert-add-matter').hide();
-	$('#alert-save-task').hide();
-	$('#alert-add-data').hide();
-	$('#alert-save-noti').hide();
-	$('#delete-task').hide();
-	$('#alert-delete-noti').hide();
+	
 
 	$('#form-config').submit(function(event) {
 		event.preventDefault();
@@ -253,18 +247,6 @@ $(document).ready(function() {
 			}
 		})
 	}
-	$('#studen-empty-table').click(function(event) {
-		let nameTable = 'data'
-		$.ajax({
-			url: '../validate/empty_table_studen.php',
-			type: 'GET',
-			data: { nameTable },
-			success: function(response){
-				console.log(response);
-			}
-		})
-		
-	});
 
 	$(document).on('click', '.matter-delete', function(event) {
 		let element = $(this)[0].parentElement.parentElement;
@@ -281,129 +263,6 @@ $(document).ready(function() {
 			}
 		})		
 	});
-	/*
-	 * WINDOWS TASK < tareas >
-	 *
-	 *
-	*/
-
-	let inputsTaks = [
-		$('#task-title'),
-		$('#task-descrip'),
-		$('#task-submit')
-	]
-	inputsTaks[0].keyup(function(event) {
-		validateInpustTaks(inputsTaks[1],inputsTaks[0]);
-	});
-
-	inputsTaks[1].keyup(function(event) {
-		validateInpustTaks(inputsTaks[1],inputsTaks[0]);
-	});
-	function validateInpustTaks (title,descript){
-		if (title.val().length > 3 &&
-			descript.val().length > 3) {
-			inputsTaks[2].removeClass('btn-outline-dark')
-			inputsTaks[2].removeClass('disabled')
-			inputsTaks[2].addClass('btn-dark')
-		} else{
-			inputsTaks[2].addClass('btn-outline-dark')
-			inputsTaks[2].addClass('disabled')
-			inputsTaks[2].removeClass('btn-dark')
-		}
-	}
-	$('#search-task').keyup(function(event) {
-		let search = $('#search-task').val()
-		$.ajax({
-			url: '../validate/search_task.php',
-			type: 'POST',
-			data: { search },
-			success: function(response){
-				let tasks = $.parseJSON(response);
-				let templete = '';
-				tasks.forEach(task =>{
-					templete += `
-						<li>
-							${task.title}
-						</li>
-					`
-				})
-				$('#search-result').html(templete)
-			}
-		})	
-	});
-	$('#save-task').submit(function(event) {
-		event.preventDefault();
-		let postData = {
-			title: $('#task-title').val(),
-			descript: $('#task-descrip').val()
-		}
-		$.ajax({
-			url: '../validate/save_task.php',
-			type: 'POST',
-			data: postData,
-			success: function(response){
-				seeTask();
-				seeNotification();
-				$('#save-task')[0].reset();
-				inputsTaks[2].addClass('btn-outline-dark')
-				inputsTaks[2].addClass('disabled')
-				$('#alert-save-task').text(response);
-				$('#alert-save-task').show(500);
-				$('#alert-save-task').hide(3000);
-				$('#save-task').trigger('reset');
-			}
-		})	
-	});
-
-	$(document).on('click', '.task-delete', function(event) {
-		let element = $(this)[0].parentElement.parentElement;
-		let idTask = $(element).attr('idRow');
-		$.ajax({
-			url: '../validate/delete_task.php',
-			type: 'POST',
-			data: { idTask },
-			success: function(response){
-				seeTask();
-				seeNotification();
-				$('#delete-task').text(response);
-				$('#delete-task').show(500);
-				$('#delete-task').hide(3000);
-			}
-		})		
-	});
-
-	/*
-	 * Function para ver tareas
-	 *
-	*/
-	function seeTask(){
-		$.ajax({
-			url: '../validate/see_task.php',
-			type: 'POST',
-			success: function(response){
-				let tasks = JSON.parse(response);
-				let templete = '';
-
-				tasks.forEach(task =>{
-					templete += `
-						<tr idRow="${task.id}">
-							<td>
-								${task.title}
-							</td>
-							<td>
-								${task.descript}
-							</td>
-							<td class="center-xy">
-								<i class="bi-trash-fill text-danger lead task-delete"></i>
-							</td>
-						</tr>
-					`
-				})
-				$('#table-body-task').html(templete)
-			}
-		})
-	}
-
 
 	/*
 	 * WINDOWS DIARY
@@ -415,7 +274,8 @@ $(document).ready(function() {
 	const dataTime = new Date();
 	let datePost = '';
 	let inputsNoti = [
-		$('#noti-title'),
+		$('#noti-matter'),
+		$('#noti-descript'),
 		$('#noti-day'),
 		$('#noti-month'),
 		$('#noti-year'),
@@ -424,18 +284,18 @@ $(document).ready(function() {
 	
 
 	inputsNoti[0].keyup(function(event) {
-		validateInpustNoti(inputsNoti[0],inputsNoti[1],inputsNoti[2],inputsNoti[3])
+		validateInpustNoti(inputsNoti[0],inputsNoti[1],inputsNoti[2],inputsNoti[3],inputsNoti[4])
 	});
 	inputsNoti[1].keyup(function(event) {
-		validateInpustNoti(inputsNoti[0],inputsNoti[1],inputsNoti[2],inputsNoti[3])
+		validateInpustNoti(inputsNoti[0],inputsNoti[1],inputsNoti[2],inputsNoti[3],inputsNoti[4])
 	});
 	inputsNoti[2].keyup(function(event) {
-		validateInpustNoti(inputsNoti[0],inputsNoti[1],inputsNoti[2],inputsNoti[3])
+		validateInpustNoti(inputsNoti[0],inputsNoti[1],inputsNoti[2],inputsNoti[3],inputsNoti[4])
 	});
 	inputsNoti[3].keyup(function(event) {
-		validateInpustNoti(inputsNoti[0],inputsNoti[1],inputsNoti[2],inputsNoti[3])
+		validateInpustNoti(inputsNoti[0],inputsNoti[1],inputsNoti[2],inputsNoti[3],inputsNoti[4])
 	});
-	function validateInpustNoti (title,day,month,year){
+	function validateInpustNoti(title,descript,day,month,year){
 		let monthValidate = inputsNoti[2].val();
 		let dayMin = 1;
 		let dayMax = 31;
@@ -443,6 +303,7 @@ $(document).ready(function() {
 		else if(monthValidate== 4 && monthValidate== 6 && monthValidate== 9 && monthValidate== 11 ) dayMax = 30;
 		
 		if (title.val().length > 1 &&
+			descript.val().length > 2 &&
 			day.val().length >= 1 &&
 			month.val().length >= 1 &&
 			year.val().length >= 4 &&
@@ -452,22 +313,23 @@ $(document).ready(function() {
 			day.val() >= dayMin) {
 
 
-			inputsNoti[4].removeClass('btn-outline-dark');
-			inputsNoti[4].removeClass('disabled');
-			inputsNoti[4].addClass('btn-dark');
+			inputsNoti[5].removeClass('btn-outline-dark');
+			inputsNoti[5].removeClass('disabled');
+			inputsNoti[5].addClass('btn-dark');
 		} else{
-			inputsNoti[4].addClass('btn-outline-dark');
-			inputsNoti[4].addClass('disabled');
-			inputsNoti[4].removeClass('btn-dark');
+			inputsNoti[5].addClass('btn-outline-dark');
+			inputsNoti[5].addClass('disabled');
+			inputsNoti[5].removeClass('btn-dark');
 		}
 	}
 	$('#save-noti').submit(function(event) {
 		event.preventDefault();
 		let postData = {
-			title: $('#noti-title').val(),
-			day: inputsNoti[1].val(),
-			month: inputsNoti[2].val(),
-			year: inputsNoti[3].val()
+			title: inputsNoti[0].val(),
+			descript: inputsNoti[1].val(),
+			day: inputsNoti[2].val(),
+			month: inputsNoti[3].val(),
+			year: inputsNoti[4].val()
 		}
 		$.ajax({
 			url: '../validate/save_noti.php',
@@ -482,7 +344,7 @@ $(document).ready(function() {
 				$('#alert-save-noti').show(500);
 				$('#alert-save-noti').hide(3000);
 				$('#save-noti').trigger('reset');
-				seeNoti();
+				seeNot();
 				seeNotification();
 				event.preventDefault();
 			}
@@ -516,8 +378,9 @@ $(document).ready(function() {
 			type: 'POST',
 			data: { idNoti },
 			success: function(response){
-				seeNoti();
+				seeNot();
 				seeNotification();
+				hideIcoNoti(icoNoti,itemNoti);
 				$('#alert-delete-noti').text(response);
 				$('#alert-delete-noti').show(500);
 				$('#alert-delete-noti').hide(3000);
@@ -527,7 +390,7 @@ $(document).ready(function() {
 	/*
 	 * See Noti
 	*/
-	function seeNoti(){
+	function seeNot(){
 		$.ajax({
 			url: '../validate/see_noti.php',
 			type: 'POST',
@@ -542,10 +405,13 @@ $(document).ready(function() {
 							${noti.title}
 						</td>
 						<td>
+							${noti.descript}
+						</td>
+						<td>
 							${noti.date}
 						</td>
 						<td>
-							${noti.day}/${noti.month}/${noti.year}
+							${noti.day}-${noti.month}-${noti.year}
 						</td>
 						<td class="center-xy">
 							<i class="bi-trash-fill text-danger lead noti-delete"></i>
@@ -576,7 +442,6 @@ $(document).ready(function() {
 			type: 'POST',
 			success: function(response){
 				let notis = JSON.parse(response);
-
 				const date = new Date();
 				let dayVal = date.getDay();
 				let monthVal = date.getMonth()+1;
@@ -589,9 +454,6 @@ $(document).ready(function() {
 
 				let templete = '';
 				notis.forEach(noti =>{
-
-						
-
 					let dayJson = parseInt(noti.day);
 					let monthJson = parseInt(noti.month);
 					let yearJson = parseInt(noti.year);
@@ -670,12 +532,9 @@ $(document).ready(function() {
 					
 					templete += `
 						<tr>
-							<td>
-								Entregar: <b class="text-info">${noti.title}</b>
-							</td>
-							<td>
-								<b class="text-${color}">${dateLimit}</b>
-							</td>
+						<td class="text-muted">${noti.title}</td>
+						<td><b class="text-info">${noti.descript}</b></td>
+						<td><b class="text-${color}">${dateLimit}</b></td>
 						</tr>
 					`
 					hideIcoNoti(icoNoti,itemNoti);
@@ -684,25 +543,25 @@ $(document).ready(function() {
 				$('#noti-table-primary').html(templete);				
 			}
 		})	
-		$.ajax({
-			url: '../validate/see_task.php',
-			type: 'POST',
-			success: function(response){
-				let tasks = JSON.parse(response);
+		// $.ajax({
+		// 	url: '../validate/see_task.php',
+		// 	type: 'POST',
+		// 	success: function(response){
+		// 		let tasks = JSON.parse(response);
 
-				let templete = '';
-				tasks.forEach(task =>{
-					templete += `
-						<tr>
-							<td class="text-info">
-								<b>${task.descript}</b>
-							</td>
-							<td></td>
-						</tr>
-					`
-				})
-				$('#noti-table-primary').html(templete)
-			}
-		})	
+		// 		let templete = '';
+		// 		tasks.forEach(task =>{
+		// 			templete += `
+		// 				<tr>
+		// 					<td class="text-info">
+		// 						<b>${task.descript}</b>
+		// 					</td>
+		// 					<td></td>
+		// 				</tr>
+		// 			`
+		// 		})
+		// 		$('#noti-table-secondary').html(templete)
+		// 	}
+		// })
 	}
 });

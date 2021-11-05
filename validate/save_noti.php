@@ -4,15 +4,16 @@
 	if (isset($_POST['title'])) {
 
 		$title = htmlspecialchars(trim($_POST['title']));
-		$day = $_POST['day'];
-		$month = $_POST['month'];
-		$year = $_POST['year'];
+		$descript = htmlspecialchars(trim($_POST['descript']));
+		$day = htmlspecialchars(trim($_POST['day']));
+		$month = htmlspecialchars(trim($_POST['month']));
+		$year = htmlspecialchars(trim($_POST['year']));
 		$date_add = date("d/m/y");
-
 
 		$query = $DB->prepare('INSERT INTO diary VALUES(
 			null,
 			:title,
+			:descript,
 			:day,
 			:month,
 			:year,
@@ -21,6 +22,7 @@
 		$query->execute(
 			array(
 				':title' => $title,
+				':descript' => $descript,
 				':day' => $day,
 				':month' => $month,
 				':year' => $year,
