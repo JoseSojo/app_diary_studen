@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	console.log('¡jQuery is Working!');
 	// HIDE ELEMENTS
 	$('#msj-err-matter').hide();
 	$('#alert-matter-delete').hide();
@@ -15,6 +16,81 @@ $(document).ready(function() {
 	seeMatter();
 	seeNot();
 	seeNotification();
+	seeHistory();
+
+
+	/*
+	 * Mode
+	 * DARK - LIGHT
+	 *
+	*/
+	let modesIcos = [
+		$('#dark'),
+		$('#light')
+	]
+	modesIcos[1].hide(10);
+
+	modesIcos[0].click(function(event) {
+		modesIcos[0].hide(10);
+		modesIcos[1].show(10);
+		modeChange($('#body-global'),'bg-secondary','bg-light')
+
+		modeChange($('#nav-global'),'navbar-dark','navbar-light');
+		modeChange($('#nav-global'),'bg-dark','bg-light');
+		modeChange($('#card-data-studen'),'bg-dark','bg-light');
+		modeChange($('#card-data-studen'),'text-light','text-dark');
+		modeChange($('#table-data-studen'),'table-dark','table-light');
+
+		modeChange($('#card-matter-studen'),'bg-dark','bg-light');
+		modeChange($('#table-matter-studen'),'table-dark','table-light');
+		modeChange($('#table-matter-studen'),'text-light','text-dark');
+
+		modeChange($('#card-diary-search'),'bg-dark','bg-light');
+		modeChange($('#card-diary-save'),'bg-dark','bg-light');
+		modeChange($('#card-diary-search'),'text-light','text-dark');
+		modeChange($('#card-diary-save'),'text-light','text-dark');
+		modeChange($('#table-diary'),'table-dark','table-light');
+
+		modeChange($('#table-notifications'),'table-dark','table-light');
+
+		modeChange($('#table-body-history'),'table-dark','table-light');
+
+		modeChange($('#form-config'),'bg-dark','bg-light');
+		modeChange($('#form-matter'),'bg-dark','bg-light');
+	});
+	modesIcos[1].click(function(event) {
+		modesIcos[0].show(10);
+		modesIcos[1].hide(10);
+		modeChange($('#body-global'),'bg-light','bg-secondary');
+
+		modeChange($('#nav-global'),'navbar-light','navbar-dark');
+		modeChange($('#nav-global'),'bg-light','bg-dark');
+		modeChange($('#card-data-studen'),'bg-light','bg-dark');
+		modeChange($('#card-data-studen'),'text-dark','text-light');
+		modeChange($('#table-data-studen'),'table-light','table-dark');
+
+		modeChange($('#card-matter-studen'),'bg-light','bg-dark');
+		modeChange($('#table-matter-studen'),'table-light','table-dark');
+
+		modeChange($('#card-diary-search'),'bg-light','bg-dark');
+		modeChange($('#card-diary-save'),'bg-light','bg-dark');
+		modeChange($('#card-diary-search'),'text-dark','text-light');
+		modeChange($('#card-diary-save'),'text-dark','text-light');
+		modeChange($('#table-diary'),'table-light','table-dark');
+
+		modeChange($('#table-notifications'),'table-light','table-dark');
+
+		modeChange($('#table-body-history'),'table-light','table-dark');
+
+		modeChange($('#form-matter'),'bg-light','bg-dark');
+		modeChange($('#form-config'),'bg-light','bg-dark');
+	});
+
+	function modeChange(camp,add,remove){
+		camp.removeClass(remove);
+		camp.addClass(add)
+	}
+
 
 	/*
 	 * CAMBIAR DE VENTANAS
@@ -23,12 +99,14 @@ $(document).ready(function() {
 	// Array the windows document
 	let windows = [
 		$('#studen'), $('#diary'),
-		$('#noti'), $('#config')
+		$('#noti'), $('#config'),
+		$('#history')
 	]
 	// Array the buton for change window
 	let btns = [
 		$('#ico-studen'), $('#ico-diary'),
-		$('#ico-noti'),	$('#ico-config')
+		$('#ico-noti'),	$('#ico-config'),
+		$('#ico-history')
 	]
 	// ICO NOTI
 	let icoNoti = false;
@@ -40,41 +118,48 @@ $(document).ready(function() {
 			ico.addClass('bi-bell-fill');
 		}
 	}
-	seeHide(windows[0],windows[1],windows[2],windows[3]);
-	removeAddClass(btns[0],btns[1],btns[2],btns[3])
+	seeHide(windows[0],windows[1],windows[2],windows[3],windows[4]);
+	removeAddClass(btns[0],btns[1],btns[2],btns[3],btns[4]);
 
 	btns[0].click(function(event) {
-		seeHide(windows[0],windows[1],windows[2],windows[3]);
-		removeAddClass(btns[0],btns[1],btns[2],btns[3])
+		seeHide(windows[0],windows[1],windows[2],windows[3],windows[4]);
+		removeAddClass(btns[0],btns[1],btns[2],btns[3],btns[4]);
 	});
 	btns[1].click(function(event) {
-		seeHide(windows[1],windows[0],windows[2],windows[3]);
-		removeAddClass(btns[1],btns[0],btns[2],btns[3])
+		seeHide(windows[1],windows[0],windows[2],windows[3],windows[4]);
+		removeAddClass(btns[1],btns[0],btns[2],btns[3],btns[4]);
 	});
 	btns[2].click(function(event) {
-		seeHide(windows[2],windows[0],windows[1],windows[3]);
-		removeAddClass(btns[2],btns[0],btns[1],btns[3])
+		seeHide(windows[2],windows[0],windows[1],windows[3],windows[4]);
+		removeAddClass(btns[2],btns[0],btns[1],btns[3],btns[4]);
 	});
 	btns[3].click(function(event) {
-		seeHide(windows[3],windows[0],windows[1],windows[2]);
-		removeAddClass(btns[3],btns[0],btns[1],btns[2])
+		seeHide(windows[3],windows[0],windows[1],windows[2],windows[4]);
+		removeAddClass(btns[3],btns[0],btns[1],btns[2],btns[4])
 	});
-	function seeHide(cero,one,two,tree,){
+	btns[4].click(function(event) {
+		seeHide(windows[4],windows[0],windows[1],windows[2],windows[3]);
+		removeAddClass(btns[4],btns[0],btns[1],btns[2],btns[3])
+	});
+	function seeHide(cero,one,two,tree,four){
 		cero.show(700);
 		one.hide();
 		two.hide();
 		tree.hide();
+		four.hide();
 	}	
-	function removeAddClass(cero,one,two,tree){
+	function removeAddClass(cero,one,two,tree,four){
 		cero.removeClass('text-muted');
 		one.addClass('text-muted');
 		two.addClass('text-muted');
 		tree.addClass('text-muted');
+		four.addClass('text-muted');
 		
 		cero.addClass('text-warning');
 		one.removeClass('text-warning');
 		two.removeClass('text-warning');
 		tree.removeClass('text-warning');
+		four.removeClass('text-warning');
 	}
 
 
@@ -101,7 +186,7 @@ $(document).ready(function() {
 			adminAge: $('#age-admin').val(),
 			adminYear: $('#year-admin').val()
 		};
-		$.post('../validate/send_data.php', postData, function(response) {
+		$.post('src/send_data.php', postData, function(response) {
 			seeData();
 			$('#alert-add-data').text(response)
 			$('#alert-add-data').show(1000)
@@ -154,7 +239,7 @@ $(document).ready(function() {
 			matter: $('#input-matter').val()
 		}
 		$.ajax({
-			url: '../validate/add_matter.php',
+			url: 'src/add_matter.php',
 			type: 'POST',
 			data: dataPost,
 			success: function(response){
@@ -188,7 +273,7 @@ $(document).ready(function() {
 	*/
 	function seeMatter (){
 		$.ajax({
-			url: '../validate/see_matter.php',
+			url: 'src/see_matter.php',
 			type: 'POST',
 			success: function(response){
 				let matters = JSON.parse(response);
@@ -213,7 +298,7 @@ $(document).ready(function() {
 
 	function seeData(){
 		$.ajax({
-			url: '../validate/data.php',
+			url: 'src/data.php',
 			type: 'GET',
 			success: function(response){
 				let datas = JSON.parse(response);
@@ -252,7 +337,7 @@ $(document).ready(function() {
 		let element = $(this)[0].parentElement.parentElement;
 		let idMatter = $(element).attr('idMatter');
 		$.ajax({
-			url: '../validate/delete_matter.php',
+			url: 'src/delete_matter.php',
 			type: 'POST',
 			data: { idMatter },
 			success: function(response){
@@ -332,14 +417,14 @@ $(document).ready(function() {
 			year: inputsNoti[4].val()
 		}
 		$.ajax({
-			url: '../validate/save_noti.php',
+			url: 'src/save_noti.php',
 			type: 'POST',
 			data: postData,
 			success: function(response){
 				console.log(response);
 				$('#save-noti')[0].reset();
-				inputsTaks[2].addClass('btn-outline-dark')
-				inputsTaks[2].addClass('disabled')
+				inputsNoti[5].addClass('btn-outline-dark')
+				inputsNoti[5].addClass('disabled')
 				$('#alert-save-noti').text(response);
 				$('#alert-save-noti').show(500);
 				$('#alert-save-noti').hide(3000);
@@ -353,7 +438,7 @@ $(document).ready(function() {
 	$('#search-diary').keyup(function(event) {
 		let search = $('#search-diary').val()
 		$.ajax({
-			url: '../validate/search_noti.php',
+			url: 'src/search_noti.php',
 			type: 'POST',
 			data: { search },
 			success: function(response){
@@ -374,7 +459,7 @@ $(document).ready(function() {
 		let element = $(this)[0].parentElement.parentElement;
 		let idNoti = $(element).attr('idRow');
 		$.ajax({
-			url: '../validate/delete_noti.php',
+			url: 'src/delete_noti.php',
 			type: 'POST',
 			data: { idNoti },
 			success: function(response){
@@ -392,7 +477,7 @@ $(document).ready(function() {
 	*/
 	function seeNot(){
 		$.ajax({
-			url: '../validate/see_noti.php',
+			url: 'src/see_noti.php',
 			type: 'POST',
 			success: function(response){
 				let notis = JSON.parse(response);
@@ -401,27 +486,28 @@ $(document).ready(function() {
 				notis.forEach(noti =>{
 					templete += `
 						<tr idRow="${noti.id}">
-						<td>
+						<td class="small col">
 							${noti.title}
 						</td>
-						<td>
+						<td class="small col">
 							${noti.descript}
 						</td>
-						<td>
-							${noti.date}
+						<td class="col d-none d-md-block">
+							<span>
+								${noti.date}
+							</span>
 						</td>
-						<td>
+						<td class="small col">
 							${noti.day}-${noti.month}-${noti.year}
 						</td>
-						<td class="center-xy">
-							<i class="bi-trash-fill text-danger lead noti-delete"></i>
+						<td class="center-xy col">
+							<i class="bi-trash-fill text-danger noti-delete"></i>
 						</td>
 						</tr>
 					`
 				})
 
-				$('#table-body-noti').html(templete)
-				
+				$('#table-body-diary').html(templete)
 			}
 		})
 	}
@@ -438,7 +524,7 @@ $(document).ready(function() {
 	function seeNotification(){
 		// NOTIFICATIONS PRIMARYS
 		$.ajax({
-			url: '../validate/see_noti.php',
+			url: 'src/see_noti.php',
 			type: 'POST',
 			success: function(response){
 				let notis = JSON.parse(response);
@@ -462,6 +548,7 @@ $(document).ready(function() {
 					let resultMonth = monthJson - monthVal;
 					let color;
 					let dateLimit = '';
+					let bgTable = '';
 	
 					if (resultMonth < 0) {
 						dateLimit = 'Tiempo terminado';
@@ -470,8 +557,12 @@ $(document).ready(function() {
 					else if (resultMonth == 0){
 						let daySee = dayJson - dayVal;
 						dateLimit = daySee + ' dias';
-
-						if (daySee == 0) {
+						if (daySee < 0) {
+							bgTable = 'table-danger'
+							color = 'danger';
+							dateLimit = 'tiempo perdido';
+						}
+						else if (daySee == 0) {
 							color = 'danger';
 							dateLimit = 'hoy';
 						}
@@ -531,7 +622,7 @@ $(document).ready(function() {
 					}
 					
 					templete += `
-						<tr>
+						<tr class="${bgTable}">
 						<td class="text-muted">${noti.title}</td>
 						<td><b class="text-info">${noti.descript}</b></td>
 						<td><b class="text-${color}">${dateLimit}</b></td>
@@ -540,28 +631,41 @@ $(document).ready(function() {
 					hideIcoNoti(icoNoti,itemNoti);
 				})
 
-				$('#noti-table-primary').html(templete);				
+				$('#table-body-notification').html(templete);		
 			}
-		})	
-		// $.ajax({
-		// 	url: '../validate/see_task.php',
-		// 	type: 'POST',
-		// 	success: function(response){
-		// 		let tasks = JSON.parse(response);
+		})
+	}
+	/*
+	 * see history
+	 *
+	 *
+	*/
+	function seeHistory(){
+		$.ajax({
+			url: 'src/see_history.php',
+			type: 'POST',
+			success: function(response){
+				let history = JSON.parse(response);
+				let templete = '';
 
-		// 		let templete = '';
-		// 		tasks.forEach(task =>{
-		// 			templete += `
-		// 				<tr>
-		// 					<td class="text-info">
-		// 						<b>${task.descript}</b>
-		// 					</td>
-		// 					<td></td>
-		// 				</tr>
-		// 			`
-		// 		})
-		// 		$('#noti-table-secondary').html(templete)
-		// 	}
-		// })
+				history.forEach(his =>{
+					templete += `
+						<tr>
+						<td class="small col">
+							${his.id}
+						</td>
+						<td class="small col">
+							${his.descript}
+						</td>
+						<td class="small col">
+							${his.date}
+						</td>
+						</tr>
+					`
+				})
+
+				$('#table-body-history').html(templete)
+			}
+		})
 	}
 });

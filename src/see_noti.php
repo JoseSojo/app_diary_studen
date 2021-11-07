@@ -6,8 +6,8 @@
 	$mysql_i = mysqli_query($DBi, $query);
 
 	$json = array();
-	while ($line_task = mysqli_fetch_array($mysql_i)) {
-		$json[] = $line_task;
+	while ($row = mysqli_fetch_array($mysql_i)) {
+		$json[] = $row;
 	}
 	$json_string = json_encode($json);
 	echo $json_string;

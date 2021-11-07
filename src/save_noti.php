@@ -30,5 +30,24 @@
 			)
 		);
 		echo 'Nota Guardada';
+
+		/*
+		 * Space save to table history
+		 *
+		 *
+		*/
+		$requets = 'Guardaste una Nota';
+		$date_save = date('d/m/y');
+		$save_history = $DB->prepare('INSERT INTO history VALUES(
+			null,
+			:descritp,
+			:date_save
+		)');
+		$save_history->execute(
+			array(
+				':descritp' => $requets,
+				':date_save' => $date_save
+			)
+		);
 	}
  ?>

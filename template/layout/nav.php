@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark fixed-top" aria-label="First navbar example">
+<nav class="navbar navbar-light bg-light fixed-top shadow-lg" aria-label="First navbar example" id="nav-global">
 	<div class="container-fluid">
 	  	<a class="navbar-brand lead text-info" href="#">
 	  		<i class="bi-clipboard-check"></i>
@@ -6,27 +6,37 @@
 		</a>
 	  	
 
-		<ul class="nav">
+		<ul class="nav center-xy">
+			<li>
+				<i class="h5 bi-moon-stars-fill text-dark" id="dark"></i>
+				<i class="h5 bi-brightness-high-fill text-light" id="light"></i>
+			</li>
 		  	<li class="nav-item">
-				<a class="my-2  mx-3" href="#" id="btn-studen">
-					<i class="bi-file-person-fill lead" id="ico-studen"></i>
+				<a class="my-2  mx-1 mx-md-3" href="#">
+					<i class="h5 bi-file-person-fill" id="ico-studen"></i>
 				</a>
 	  		</li>
 	  		<li class="nav-item">
-				<a class="my-2 mx-3" href="#" id="btn-diary">
-					<i class="bi-calendar-date-fill lead" id="ico-diary"></i>
+				<a class="my-2 mx-1 mx-md-3" href="#">
+					<i class="h5 bi-calendar-date-fill" id="ico-diary"></i>
 				</a>
 			</li>
 	  		<li class="nav-item">
-				<a class="my-2 mx-3" href="#" id="btn-noti">
-					<i class="bi-bell-slash-fill lead" id="ico-noti"></i>
+				<a class="my-2 mx-1 mx-md-3" href="#">
+					<i class="h5 bi-bell-slash-fill" id="ico-noti"></i>
 				</a>
 	  		</li>
 	  		<li class="nav-item">
-	  			<a href="#" class="my-2 mx-3" id="btn-config">
-	  				<i class="bi-tools lead" id="ico-config"></i>
+	  			<a href="#" class="my-2 mx-1 mx-md-3">
+	  				<i class="h5 bi-tools" id="ico-config"></i>
+	  			</a>
+	  		</li>
+	  		<li class="nav-item">
+	  			<a href="#" class="my-2 mx-1 mx-md-3">
+	  				<i class="h5 bi-card-text" id="ico-history"></i>
 	  			</a>
 	  		</li>
 		</ul>
 	</div>
 </nav>
+<div class="py-5"></div>

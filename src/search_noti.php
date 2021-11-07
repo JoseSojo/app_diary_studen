@@ -20,5 +20,24 @@
 		}
 		$json_string = json_encode($json);
 		echo $json_string;
+
+		/*
+		 * Space save to table history
+		 *
+		 *
+		*/
+		$requets = 'Buscastes una nota';
+		$date_save = date('d/m/y');
+		$save_history = $DB->prepare('INSERT INTO history VALUES(
+			null,
+			:descritp,
+			:date_save
+		)');
+		$save_history->execute(
+			array(
+				':descritp' => $requets,
+				':date_save' => $date_save
+			)
+		);
 	}
  ?>

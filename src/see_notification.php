@@ -2,7 +2,7 @@
 
 	include('../db/db.php.dist');
 
-	$query = 'SELECT * FROM diary';
+	$query = 'SELECT * FROM history';
 	$request = mysqli_query($DBi, $query);
 	if (!$request) {
 		die('Ah ocurrido un error');
@@ -13,9 +13,8 @@
 		$json[] = $row;
 	}
 
-	echo "<pre>";
-	print_r($json);
-	echo "</pre>";
+	$jsonstring = json_encode($json);
+	echo $jsonstring;
 
 
 
